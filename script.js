@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
       controls.classList.remove("flex-center");
       toggleElementVisibility(text, true);
       toggleElementVisibility(stext, false);
+      toggleElementVisibility(saveButton, true);
       imageOptions.forEach((option) => toggleElementVisibility(option, true));
       layoutOptions.forEach((option) => toggleElementVisibility(option, true));
 
