@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     'input[name="threeLayout"]'
   );
   const verticalLayout = document.getElementById("verticalLayout");
-
+  let backgroundColor = gapColor.value;
   let uploadedImages = [];
 
   function toggleElementVisibility(element, isVisible) {
@@ -40,12 +40,16 @@ document.addEventListener("DOMContentLoaded", function () {
       controls.classList.remove("flex-center");
       toggleElementVisibility(text, true);
       toggleElementVisibility(stext, false);
+
       toggleElementVisibility(saveButton, true);
       imageOptions.forEach((option) => toggleElementVisibility(option, true));
       layoutOptions.forEach((option) => toggleElementVisibility(option, true));
 
       imageOptions.forEach((option, i) => {
-        toggleElementVisibility(option, i < Math.min(4, uploadedImages.length));
+        toggleElementVisibility(
+          option,
+          i < Math.min(4, uploadedImages.length - 1)
+        );
       });
 
       toggleElementVisibility(threeImagesLayout, uploadedImages.length > 2);
@@ -70,7 +74,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const validFiles = files.filter((file) => file.type.startsWith("image/")); // Check for images
 
     if (files.length > 4) {
-      alert("You can select a maximum of 4 images");
+      alert("You can select a maximum of 4 images!");
+      return;
+    }
+    if (files.length === 1) {
+      alert("You need minimum 2 images!");
       return;
     }
 
@@ -91,12 +99,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateLayout() {
     if (uploadedImages.length === 0) return;
+    if (uploadedImages.length === 1) return;
 
     const imageCount = parseInt(
       document.querySelector('input[name="imageCount"]:checked').value
     );
     const gap = gapSlider.value;
-    const backgroundColor = gapColor.value;
+    backgroundColor = gapColor.value;
 
     album.style.setProperty("--gap-size", gap + "px");
     album.style.backgroundColor = backgroundColor;
@@ -106,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const imagesToDisplay = uploadedImages.slice(0, imageCount);
 
     if (imageCount === 2) {
+      album.style.gap = `${gap}px`;
       album.classList.toggle("vertical", verticalLayout.checked);
       album.classList.toggle("horizontal", !verticalLayout.checked);
 

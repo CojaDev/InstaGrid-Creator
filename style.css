@@ -88,8 +88,8 @@ main {
 }
 
 .stext{
-    font-size: small;
-    margin-top: 2px;
+    font-size: 0.8rem;
+    margin-top: 4px;
 }
 
 .file-input {
@@ -342,6 +342,7 @@ main {
 }
 
 .album {
+    position: relative;
     display: grid;
     width: 100%;
     aspect-ratio: 1 / 1; /* 1:1 aspect ratio for square layout */
@@ -446,12 +447,60 @@ main {
 .post-likes {
     font-weight: 600;
 }
-
+.post-comments{
+    cursor: pointer;
+}
 .post-comments, .post-time {
     color: #8e8e8e;
 }
+.credits{
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    color: #fafafa;
+}
+.credits a{
+    color:#fafafa;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.centered-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: #636363;
+    padding: 2rem;
+}
+
+.centered-text svg {
+    margin-bottom: 1rem;
+    color: #8d8d8d;
+}
+
+.centered-text p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.centered-text span {
+    font-size: 0.9rem;
+}
 
 @media (max-width: 1024px) {
+    .credits{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: 0px;
+    bottom: 0px;
+        width: 100%;
+        padding: 30px;
+    }
     .container {
         padding: 1rem;
     }
