@@ -55,4 +55,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## Contact
 
-If you have any questions, feel free to reach out to me at your.email@example.com or open an issue in this repository.
+If you have any questions, feel free to reach out to me at amarcetic04@gmail.com or open an issue in this repository.
